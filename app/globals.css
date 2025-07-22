@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}
+
+/* Accessibility Enhancements */
+.high-contrast {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --primary: 220 100% 30%;
+  --primary-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+}
+
+.high-contrast .bg-blue-50 {
+  @apply bg-blue-100;
+}
+
+.high-contrast .text-slate-600 {
+  @apply text-slate-900;
+}
+
+.high-contrast .border-blue-100 {
+  @apply border-blue-400;
+}
+
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.large-buttons button {
+  min-height: 60px !important;
+  font-size: 1.25rem !important;
+}
+
+.large-buttons .w-14 {
+  width: 4rem !important;
+  height: 4rem !important;
+}
+
+.large-buttons .w-10 {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+/* Focus indicators for accessibility */
+button:focus-visible,
+[role="button"]:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  @apply ring-4 ring-blue-500 ring-offset-2 outline-none;
+}
+
+/* High contrast focus indicators */
+.high-contrast button:focus-visible,
+.high-contrast [role="button"]:focus-visible {
+  @apply ring-4 ring-yellow-400 ring-offset-2;
+}
+
+/* Touch target improvements */
+@media (pointer: coarse) {
+  button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-ping {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-blue-50 {
+    @apply bg-blue-200;
+  }
+  .text-slate-600 {
+    @apply text-slate-900;
+  }
+  .border-blue-100 {
+    @apply border-blue-400;
+  }
+}
+
+/* Screen reader optimizations */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
