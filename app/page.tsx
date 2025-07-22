@@ -1,175 +1,160 @@
 "use client"
 
 import { useState } from "react"
-import { Mic, Phone, MessageCircle, Heart, Shield, Zap, ChevronRight } from "lucide-react"
+import { AlertTriangle, Globe, Settings, Play, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import LanguageModal from "@/components/language-modal"
 import AccessibilityPanel from "@/components/accessibility-panel"
 
 export default function HomePage() {
   const [showLanguageModal, setShowLanguageModal] = useState(false)
-  const [showAccessibility, setShowAccessibility] = useState(false)
+  const [showAccessibilityPanel, setShowAccessibilityPanel] = useState(false)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
-      {/* Accessibility Quick Access */}
-      <div className="fixed top-4 right-4 z-50">
-        <Button
-          onClick={() => setShowAccessibility(true)}
-          className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 shadow-lg"
-          aria-label="Accessibility Options"
-        >
-          ♿
-        </Button>
-      </div>
-
       {/* Header */}
-      <header className="px-6 py-8 text-center">
-        <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="relative">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
+      <header className="px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+              <div className="text-center sm:text-left">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800">Lifeline AI</h1>
+                <p className="text-sm sm:text-base text-slate-600">Real-Time First Aid Assistant</p>
+              </div>
             </div>
-            <div className="absolute inset-0 animate-ping">
-              <div className="w-12 h-12 bg-blue-400 rounded-full opacity-20"></div>
+
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowLanguageModal(true)}
+                className="h-10 sm:h-12 px-3 sm:px-4 rounded-xl border-2 border-blue-200 hover:bg-blue-50"
+              >
+                <Globe className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span className="hidden sm:inline">Language</span>
+                <span className="sm:hidden">🌐</span>
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowAccessibilityPanel(true)}
+                className="h-10 sm:h-12 px-3 sm:px-4 rounded-xl border-2 border-blue-200 hover:bg-blue-50"
+              >
+                <Settings className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span className="hidden sm:inline">Accessibility</span>
+                <span className="sm:hidden">♿</span>
+              </Button>
             </div>
-          </div>
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight">Lifeline AI</h1>
-            <p className="text-lg text-slate-600 font-medium">Your Emergency Conversation Partner</p>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="px-6 py-4 max-w-lg mx-auto">
-        {/* Primary Message */}
-        <div className="text-center mb-8 p-8 bg-white/80 backdrop-blur-sm rounded-3xl border-2 border-blue-100 shadow-xl">
-          <MessageCircle className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-slate-800 mb-3">I'm here to help you through this emergency</h2>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            Just talk to me like you would a friend. I'll guide you step by step until help arrives.
-          </p>
-        </div>
-
-        {/* Primary CTA - Conversational */}
-        <div className="mb-6">
-          <Link href="/chat">
-            <Button
-              size="lg"
-              className="w-full h-20 text-xl font-bold bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-200 border-0"
-            >
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <Mic className="w-8 h-8" />
-                  <div className="absolute inset-0 animate-pulse">
-                    <Mic className="w-8 h-8 opacity-30" />
-                  </div>
+      {/* Hero Section */}
+      <main className="px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="max-w-4xl mx-auto">
+          {/* Main CTA Card */}
+          <Card className="p-6 sm:p-8 lg:p-12 bg-white/80 backdrop-blur-sm border-2 border-blue-200 shadow-xl rounded-3xl mb-8">
+            <div className="text-center">
+              <div className="mb-6 sm:mb-8">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-red-600" />
                 </div>
-                <div className="text-left">
-                  <div>🚨 Start Emergency Chat</div>
-                  <div className="text-sm opacity-90 font-normal">Tap and speak or type</div>
-                </div>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 mb-3 sm:mb-4">
+                  Emergency Assistance
+                </h2>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                  Stay calm. We'll guide you until help arrives. Get real-time voice assistance for any emergency
+                  situation.
+                </p>
               </div>
-            </Button>
-          </Link>
-        </div>
 
-        {/* Quick Emergency Actions */}
-        <div className="mb-8 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-red-200">
-          <h3 className="text-lg font-semibold text-slate-800 mb-4 text-center">Quick Emergency Actions</h3>
-          <div className="space-y-3">
-            <Button
-              size="lg"
-              className="w-full h-16 bg-red-600 hover:bg-red-700 text-white rounded-2xl text-lg font-semibold"
-              onClick={() => window.open("tel:911")}
-            >
-              <Phone className="w-6 h-6 mr-3" />
-              Call 911 Now
-            </Button>
-            <div className="grid grid-cols-2 gap-3">
-              <Link href="/chat?emergency=cpr">
+              <Link href="/chat">
                 <Button
-                  variant="outline"
                   size="lg"
-                  className="w-full h-14 border-2 border-blue-300 hover:bg-blue-50 rounded-xl bg-white/80 text-slate-700 font-medium"
+                  className="w-full sm:w-auto h-14 sm:h-16 lg:h-18 px-8 sm:px-12 lg:px-16 text-lg sm:text-xl lg:text-2xl font-semibold bg-red-600 hover:bg-red-700 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-200"
                 >
-                  💓 CPR Help
+                  <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-3" />
+                  Start Emergency Aid
                 </Button>
               </Link>
-              <Link href="/chat?emergency=choking">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full h-14 border-2 border-blue-300 hover:bg-blue-50 rounded-xl bg-white/80 text-slate-700 font-medium"
-                >
-                  🫁 Choking Help
-                </Button>
-              </Link>
+
+              <p className="text-xs sm:text-sm text-slate-500 mt-4 sm:mt-6">
+                Available 24/7 • Voice-guided assistance • Multiple languages
+              </p>
             </div>
+          </Card>
+
+          {/* Feature Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
+            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 hover:shadow-lg transition-all duration-200 rounded-2xl">
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Play className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Voice Guidance</h3>
+                <p className="text-sm sm:text-base text-slate-600">
+                  Clear, calm voice instructions to guide you through emergency procedures
+                </p>
+              </div>
+            </Card>
+
+            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 hover:shadow-lg transition-all duration-200 rounded-2xl">
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Globe className="w-6 h-6 sm:w-7 sm:h-7 text-green-600" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Multi-Language</h3>
+                <p className="text-sm sm:text-base text-slate-600">
+                  Support for 10+ languages with native voice assistance
+                </p>
+              </div>
+            </Card>
+
+            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 hover:shadow-lg transition-all duration-200 rounded-2xl sm:col-span-2 lg:col-span-1">
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Settings className="w-6 h-6 sm:w-7 sm:h-7 text-purple-600" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold text-slate-800 mb-2">Accessible</h3>
+                <p className="text-sm sm:text-base text-slate-600">
+                  Designed for all users with comprehensive accessibility features
+                </p>
+              </div>
+            </Card>
           </div>
-        </div>
 
-        {/* Secondary Actions */}
-        <div className="space-y-4">
-          <Button
-            variant="outline"
-            size="lg"
-            className="w-full h-14 text-slate-700 border-2 border-blue-200 hover:bg-blue-50 rounded-2xl bg-white/80 text-lg"
-            onClick={() => setShowLanguageModal(true)}
-          >
-            <div className="flex items-center justify-between w-full">
-              <div className="flex items-center">
-                <span className="text-2xl mr-3">🌐</span>
-                Choose Language
-              </div>
-              <ChevronRight className="w-5 h-5" />
-            </div>
-          </Button>
-
-          <Link href="/how-it-works">
+          {/* Secondary Actions */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Link href="/how-it-works">
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg border-2 border-blue-200 hover:bg-blue-50 rounded-xl bg-transparent"
+              >
+                How It Works
+              </Button>
+            </Link>
             <Button
               variant="outline"
               size="lg"
-              className="w-full h-14 text-slate-700 border-2 border-blue-200 hover:bg-blue-50 rounded-2xl bg-white/80 text-lg"
+              onClick={() => setShowLanguageModal(true)}
+              className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg border-2 border-blue-200 hover:bg-blue-50 rounded-xl"
             >
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center">
-                  <span className="text-2xl mr-3">ℹ️</span>
-                  How This Works
-                </div>
-                <ChevronRight className="w-5 h-5" />
-              </div>
+              <Globe className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+              Choose Language
             </Button>
-          </Link>
-        </div>
-
-        {/* Trust Indicators */}
-        <div className="mt-12 grid grid-cols-3 gap-6 text-center">
-          <div className="p-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <Shield className="w-6 h-6 text-blue-600" />
-            </div>
-            <p className="text-sm text-slate-600 font-semibold">Medically Reviewed</p>
-          </div>
-          <div className="p-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <Zap className="w-6 h-6 text-blue-600" />
-            </div>
-            <p className="text-sm text-slate-600 font-semibold">Real-Time Voice</p>
-          </div>
-          <div className="p-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <Heart className="w-6 h-6 text-blue-600" />
-            </div>
-            <p className="text-sm text-slate-600 font-semibold">24/7 Available</p>
           </div>
         </div>
       </main>
 
+      {/* Modals */}
       <LanguageModal isOpen={showLanguageModal} onClose={() => setShowLanguageModal(false)} />
-      <AccessibilityPanel isOpen={showAccessibility} onClose={() => setShowAccessibility(false)} />
+      <AccessibilityPanel isOpen={showAccessibilityPanel} onClose={() => setShowAccessibilityPanel(false)} />
     </div>
   )
 }

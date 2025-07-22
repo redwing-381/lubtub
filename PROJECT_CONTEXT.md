@@ -1,148 +1,182 @@
-# Lifeline AI - Emergency Conversational Assistant
+# Lifeline AI - Emergency First Aid Assistant
 
 ## Project Overview
-Lifeline AI is an AI-powered conversational emergency assistant designed to guide users through critical situations using real-time voice responses and step-by-step instructions. The application prioritizes accessibility, calm user experience, and voice-first interaction for people in high-stress emergency scenarios.
+Lifeline AI is a progressive web application (PWA) designed as an AI-powered conversational agent for emergency situations. The application provides real-time voice guidance and step-by-step instructions to help users navigate medical emergencies until professional help arrives.
 
 ## Target Users
-- **Primary**: Everyday people experiencing medical emergencies (someone fainted, choking, not breathing, seizures)
-- **Secondary**: Caregivers, family members, bystanders who need immediate guidance
-- **Accessibility Focus**: Users with disabilities, elderly users, people with limited dexterity during stress
+- **Primary**: Everyday people experiencing or witnessing medical emergencies
+- **Secondary**: Caregivers, parents, elderly individuals, people with disabilities
+- **Tertiary**: First aid trainers, community health workers
 
 ## Core Features
 
-### 1. Conversational Interface
-- **Chat-based interaction** with AI emergency assistant
-- **Voice-first design** with speech-to-text and text-to-speech
+### 1. Conversational Emergency Interface
+- **Chat-based interaction** with AI assistant
+- **Voice-first design** with text backup
+- **Real-time emergency timer** and status tracking
+- **Urgency-coded responses** (Critical, High, Medium, Low)
 - **Quick response buttons** for limited dexterity situations
-- **Real-time emergency timer** showing elapsed time
-- **Message urgency coding** (Critical=Red, High=Orange, Medium=Blue, Low=Green)
 
-### 2. Emergency Response System
-- **Intelligent triage** based on user input
-- **Step-by-step medical guidance** for common emergencies
-- **Direct 911 calling** integration
-- **Persistent emergency context** throughout session
-- **Medically reviewed protocols** for CPR, choking, unconsciousness
-
-### 3. Accessibility Features
-- **Comprehensive accessibility panel** with:
-  - Font size control (14px-28px)
-  - High contrast mode for low vision
-  - Reduced motion for vestibular disorders
+### 2. Accessibility & Inclusivity
+- **Mobile-first responsive design** optimized for all screen sizes
+- **Progressive Web App** with offline capabilities
+- **Multi-language support** (10+ languages with voice synthesis)
+- **Comprehensive accessibility panel**:
+  - Adjustable font sizes (14px-28px)
+  - High contrast mode
+  - Reduced motion settings
   - Large touch targets for motor difficulties
   - Voice-first mode prioritization
-- **Screen reader optimization** with proper ARIA labels
-- **Keyboard navigation** support
-- **Touch-friendly design** for stressed/shaking hands
 
-### 4. Multi-language Support
-- **10+ languages** with native voice synthesis
-- **Voice preview** for each language
-- **Cultural adaptation** of emergency protocols
-- **RTL language support** for Arabic/Hebrew
+### 3. Emergency-Optimized UX
+- **Large, rounded buttons** (minimum 44px touch targets)
+- **Color-coded urgency system**:
+  - 🚨 Critical (Red) - Life-threatening situations
+  - ⚠️ High (Orange) - Urgent medical attention needed
+  - ℹ️ Medium (Blue) - Guidance and instructions
+  - 💬 Low (Green) - General information and reassurance
+- **Persistent 911 call button** always accessible
+- **Auto-scroll and focus management** for hands-free use
 
 ## Technical Architecture
 
 ### Frontend Stack
-- **Next.js 15** with App Router
-- **React 18** with TypeScript
-- **Tailwind CSS** for styling
+- **Next.js 14** with App Router
+- **TypeScript** for type safety
+- **Tailwind CSS** for responsive styling
 - **Shadcn/ui** component library
-- **Lucide React** for icons
+- **Lucide React** for consistent iconography
 
-### Key Components
-\`\`\`
-app/
-├── page.tsx                 # Home page with emergency CTA
-├── chat/page.tsx           # Main conversational interface
-├── how-it-works/page.tsx   # Educational content
-├── layout.tsx              # Root layout
-└── globals.css             # Accessibility-enhanced styles
+### Progressive Web App Features
+- **Service Worker** for offline functionality
+- **Web App Manifest** with emergency shortcuts
+- **Background sync** for emergency protocol updates
+- **IndexedDB** for offline data storage
+- **Push notifications** for emergency alerts (future)
 
-components/
-├── accessibility-panel.tsx  # Comprehensive a11y controls
-├── language-modal.tsx      # Multi-language selection
-├── chat-message.tsx        # Individual message component
-├── emergency-header.tsx    # Emergency status header
-└── voice-controls.tsx      # Voice input/output controls
-\`\`\`
+### Responsive Design System
+- **Mobile-first approach** (320px+)
+- **Breakpoints**:
+  - Mobile: 320px - 639px
+  - Tablet: 640px - 1023px
+  - Desktop: 1024px+
+- **Container queries** for component-level responsiveness
+- **Flexible typography** scaling with viewport
+- **Touch-optimized interactions** for mobile devices
 
-### Styling Philosophy
-- **Medical-grade color scheme**: Blue/white/light grey for trust and calm
-- **Large touch targets**: Minimum 44px, preferred 60px+ for emergency use
-- **High contrast ratios**: 7:1 for critical text, 4.5:1 minimum
-- **Rounded corners**: Soft, approachable design to reduce anxiety
-- **Responsive design**: Mobile-first with desktop optimization
+### Accessibility Standards
+- **WCAG 2.1 AA compliance**
+- **Screen reader optimization** with proper ARIA labels
+- **Keyboard navigation** support
+- **High contrast ratios** (7:1 preferred, 4.5:1 minimum)
+- **Focus indicators** for all interactive elements
+- **Reduced motion** support for vestibular disorders
 
-## User Experience Research
+## UX Research Insights
 
 ### Emergency Interface Design Principles
-1. **Cognitive Load Reduction**: Simple decisions, clear visual hierarchy
-2. **Motor Accessibility**: Large buttons for shaking/stressed hands
-3. **Visual Accessibility**: High contrast, large fonts, clear icons
-4. **Voice-First Design**: Audio primary, visual secondary
-5. **Error Recovery**: Clear states, easy restart options
-6. **Emotional Design**: Calming colors, reassuring language
+1. **Cognitive Load Reduction**: Simple, clear instructions with minimal decision points
+2. **Motor Accessibility**: Large touch targets for users with shaking hands or limited dexterity
+3. **Visual Hierarchy**: Clear urgency indicators and consistent color coding
+4. **Voice-First Design**: Audio instructions with visual confirmation
+5. **Error Recovery**: Clear states and easy restart options
 
-### Accessibility Compliance
-- **WCAG 2.1 AA** compliance target
-- **Section 508** compatibility
-- **ADA** accessibility standards
-- **Emergency-specific** accessibility considerations
+### Stress-Reduction Features
+- **Calming color palette**: Medical blue/white/grey theme
+- **Breathing animations**: Subtle pulsing effects for anxiety reduction
+- **Reassuring language**: Positive, supportive messaging throughout
+- **Progress indicators**: Clear sense of advancement through emergency steps
 
-## Future Integrations
+## Component Architecture
 
-### Planned APIs
-- **Murf AI**: Natural voice synthesis in multiple languages
-- **Web Speech API**: Real-time speech recognition
-- **Geolocation API**: Emergency services routing
-- **Emergency Services APIs**: Direct dispatch integration
+### Core Components
+- `ChatPage`: Main conversational interface
+- `AccessibilityPanel`: Comprehensive accessibility controls
+- `LanguageModal`: Multi-language selection with voice previews
+- `EmergencyHeader`: Persistent emergency status and controls
+- `VoiceControls`: Audio input/output management
 
-### Advanced Features
-- **Offline mode** with service worker
-- **Progressive Web App** capabilities
-- **Push notifications** for emergency updates
-- **Analytics dashboard** for response effectiveness
-- **Medical protocol database** with regular updates
+### UI Components (Shadcn/ui)
+- Button, Card, Dialog, Textarea, Slider, Switch
+- All components customized for emergency use cases
+- Responsive variants for different screen sizes
 
 ## Development Guidelines
 
 ### Code Standards
 - **TypeScript strict mode** enabled
 - **ESLint + Prettier** for code formatting
-- **Semantic HTML** for screen readers
-- **ARIA labels** for all interactive elements
-- **Error boundaries** for graceful failures
+- **Component composition** over inheritance
+- **Custom hooks** for reusable logic
+- **Error boundaries** for graceful failure handling
 
-### Performance Requirements
-- **< 3 second** initial load time
-- **< 1 second** message response time
-- **Offline functionality** for core features
-- **Low bandwidth** optimization
-- **Battery efficiency** for mobile devices
+### Performance Optimization
+- **Code splitting** by route
+- **Image optimization** with Next.js Image component
+- **Font optimization** with Google Fonts
+- **Bundle analysis** for size monitoring
+- **Lazy loading** for non-critical components
 
 ### Testing Strategy
-- **Accessibility testing** with screen readers
-- **Emergency scenario** user testing
-- **Cross-browser compatibility** testing
-- **Mobile device** testing across form factors
-- **Stress testing** under high-load conditions
+- **Unit tests** for utility functions
+- **Integration tests** for user flows
+- **Accessibility testing** with axe-core
+- **Performance testing** with Lighthouse
+- **Cross-browser testing** on major platforms
+
+## Future Roadmap
+
+### Phase 1 (Current)
+- ✅ Responsive conversational interface
+- ✅ Accessibility features
+- ✅ PWA functionality
+- ✅ Multi-language support
+
+### Phase 2 (Next)
+- 🔄 **Murf AI integration** for voice synthesis
+- 🔄 **Web Speech API** for voice recognition
+- 🔄 **Geolocation services** for emergency routing
+- 🔄 **Medical protocol database** with comprehensive procedures
+
+### Phase 3 (Future)
+- 📋 **Offline emergency protocols** with IndexedDB
+- 📋 **Push notifications** for emergency alerts
+- 📋 **Integration with emergency services** APIs
+- 📋 **Admin dashboard** for protocol management
+- 📋 **Analytics and reporting** for effectiveness tracking
+
+## Integration Points
+
+### Voice Technology
+- **Murf AI**: Natural voice synthesis in multiple languages
+- **Web Speech API**: Browser-native speech recognition
+- **Audio processing**: Real-time voice analysis and feedback
+
+### Emergency Services
+- **Location services**: GPS integration for emergency routing
+- **Emergency APIs**: Integration with local emergency services
+- **Medical databases**: Access to verified emergency protocols
+
+### Accessibility Tools
+- **Screen readers**: Enhanced compatibility with NVDA, JAWS, VoiceOver
+- **Voice control**: Integration with Dragon NaturallySpeaking
+- **Switch navigation**: Support for assistive input devices
 
 ## Deployment & Infrastructure
-- **Vercel** hosting platform
-- **Edge functions** for low latency
-- **CDN optimization** for global reach
-- **Environment variables** for API keys
-- **Monitoring** with error tracking
 
-## Security & Privacy
-- **No personal data storage** beyond session
-- **HIPAA considerations** for medical guidance
-- **End-to-end encryption** for voice data
-- **Privacy-first design** with minimal tracking
-- **Secure API** communications
+### Hosting
+- **Vercel** for frontend deployment
+- **Edge functions** for API routes
+- **CDN optimization** for global performance
 
-## Business Context
-Lifeline AI addresses the critical gap in immediate emergency response when professional help is minutes away. The application serves as a bridge between emergency occurrence and professional medical intervention, potentially saving lives through proper guidance and emotional support.
+### Monitoring
+- **Error tracking** with Sentry
+- **Performance monitoring** with Vercel Analytics
+- **User feedback** collection and analysis
 
-The focus on accessibility ensures the application serves all users, including those with disabilities who may face additional challenges during emergencies. The conversational approach reduces cognitive load compared to traditional step-by-step instruction apps.
+### Security
+- **HTTPS enforcement** for all connections
+- **Content Security Policy** headers
+- **Data privacy** compliance (GDPR, HIPAA considerations)
+
+This context provides comprehensive understanding of Lifeline AI's purpose, technical implementation, and future direction for development teams and AI assistants working on the project.

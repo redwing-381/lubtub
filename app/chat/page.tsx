@@ -33,6 +33,7 @@ export default function ChatPage() {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
   const [elapsedTime, setElapsedTime] = useState(0)
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -166,8 +167,36 @@ export default function ChatPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50 flex flex-col">
       {/* Emergency Header */}
       <header className="bg-white/95 backdrop-blur-sm border-b-2 border-red-200 sticky top-0 z-50 shadow-sm">
-        <div className="px-4 py-4">
-          <div className="flex items-center justify-between mb-3">
+        <div className="px-3 sm:px-4 lg:px-6 py-3 sm:py-4">
+          {/* Mobile Header */}
+          <div className="flex items-center justify-between sm:hidden mb-3">
+            <Link href="/">
+              <Button variant="ghost" size="sm" className="text-slate-600 hover:bg-slate-100 rounded-xl px-2">
+                <ArrowLeft className="w-4 h-4 mr-1" />
+                <span className="text-sm">Back</span>
+              </Button>
+            </Link>
+
+            <div className="text-center">
+              <div className="flex items-center gap-1 justify-center mb-1">
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-bold text-red-600">EMERGENCY</span>
+              </div>
+              <div className="text-lg font-bold text-slate-800">{formatTime(elapsedTime)}</div>
+            </div>
+
+            <Button
+              size="sm"
+              className="bg-red-600 hover:bg-red-700 text-white rounded-xl px-3 py-2 shadow-lg"
+              onClick={() => window.open("tel:911")}
+            >
+              <Phone className="w-4 h-4 mr-1" />
+              <span className="text-sm font-semibold">911</span>
+            </Button>
+          </div>
+
+          {/* Desktop Header */}
+          <div className="hidden sm:flex items-center justify-between mb-3">
             <Link href="/">
               <Button variant="ghost" size="lg" className="text-slate-600 hover:bg-slate-100 rounded-xl px-4 py-2">
                 <ArrowLeft className="w-5 h-5 mr-2" />
@@ -193,12 +222,15 @@ export default function ChatPage() {
             </Button>
           </div>
 
-          <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-4">
-            <div className="flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-red-600 flex-shrink-0" />
+          {/* Emergency Status Banner */}
+          <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 flex-shrink-0" />
               <div>
-                <p className="text-red-800 font-semibold text-lg">Emergency Conversation Active</p>
-                <p className="text-red-700 text-sm">Stay calm. I'm here to guide you through this situation.</p>
+                <p className="text-red-800 font-semibold text-sm sm:text-lg">Emergency Conversation Active</p>
+                <p className="text-red-700 text-xs sm:text-sm">
+                  Stay calm. I'm here to guide you through this situation.
+                </p>
               </div>
             </div>
           </div>
@@ -206,14 +238,16 @@ export default function ChatPage() {
       </header>
 
       {/* Chat Messages */}
-      <main className="flex-1 overflow-y-auto px-4 py-4">
-        <div className="max-w-4xl mx-auto space-y-6">
+      <main className="flex-1 overflow-y-auto px-3 sm:px-4 lg:px-6 py-4">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           {messages.map((message) => (
             <div key={message.id} className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}>
-              <div className={`max-w-[85%] lg:max-w-[70%] ${message.type === "user" ? "max-w-[80%]" : ""}`}>
+              <div
+                className={`max-w-[90%] sm:max-w-[85%] lg:max-w-[70%] ${message.type === "user" ? "max-w-[85%] sm:max-w-[80%]" : ""}`}
+              >
                 {message.type === "user" ? (
-                  <Card className="p-4 bg-blue-500 text-white border-0 rounded-3xl rounded-br-lg shadow-lg">
-                    <p className="text-lg leading-relaxed">{message.content}</p>
+                  <Card className="p-3 sm:p-4 bg-blue-500 text-white border-0 rounded-3xl rounded-br-lg shadow-lg">
+                    <p className="text-sm sm:text-lg leading-relaxed">{message.content}</p>
                     <div className="flex items-center justify-end gap-2 mt-2 opacity-80">
                       <span className="text-xs">
                         {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
@@ -222,12 +256,12 @@ export default function ChatPage() {
                   </Card>
                 ) : (
                   <Card
-                    className={`p-6 border-2 ${getUrgencyStyle(message.urgency)} backdrop-blur-sm shadow-lg rounded-3xl rounded-bl-lg`}
+                    className={`p-4 sm:p-6 border-2 ${getUrgencyStyle(message.urgency)} backdrop-blur-sm shadow-lg rounded-3xl rounded-bl-lg`}
                   >
                     {message.urgency && (
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-lg">{getUrgencyIcon(message.urgency)}</span>
-                        <span className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
+                      <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                        <span className="text-base sm:text-lg">{getUrgencyIcon(message.urgency)}</span>
+                        <span className="text-xs sm:text-sm font-semibold text-slate-700 uppercase tracking-wide">
                           {message.urgency === "critical"
                             ? "Critical"
                             : message.urgency === "high"
@@ -238,8 +272,8 @@ export default function ChatPage() {
                         </span>
                       </div>
                     )}
-                    <p className="text-lg leading-relaxed text-slate-800 mb-4">{message.content}</p>
-                    <div className="flex items-center gap-2 mt-3 opacity-60">
+                    <p className="text-sm sm:text-lg leading-relaxed text-slate-800 mb-3 sm:mb-4">{message.content}</p>
+                    <div className="flex items-center gap-2 mt-2 sm:mt-3 opacity-60">
                       <span className="text-xs text-slate-600">
                         {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                       </span>
@@ -254,30 +288,30 @@ export default function ChatPage() {
       </main>
 
       {/* Voice Controls */}
-      <div className="bg-white/95 backdrop-blur-sm border-t-2 border-blue-100 p-4">
+      <div className="bg-white/95 backdrop-blur-sm border-t-2 border-blue-100 p-3 sm:p-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-center items-center gap-4 mb-4">
+          <div className="flex justify-center items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
             <Button
               size="lg"
               variant="outline"
               onClick={() => setAudioEnabled(!audioEnabled)}
-              className={`w-14 h-14 rounded-full border-2 ${audioEnabled ? "border-blue-300 bg-blue-50 hover:bg-blue-100" : "border-slate-300 bg-slate-50 hover:bg-slate-100"}`}
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 ${audioEnabled ? "border-blue-300 bg-blue-50 hover:bg-blue-100" : "border-slate-300 bg-slate-50 hover:bg-slate-100"}`}
             >
               {audioEnabled ? (
-                <Volume2 className="w-6 h-6 text-blue-600" />
+                <Volume2 className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
               ) : (
-                <VolumeX className="w-6 h-6 text-slate-500" />
+                <VolumeX className="w-5 h-5 sm:w-6 sm:h-6 text-slate-500" />
               )}
             </Button>
 
-            <div className="text-center">
+            <div className="text-center flex-1">
               {isListening && (
                 <div className="mb-2">
                   <div className="flex items-center justify-center gap-2">
                     <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    <span className="text-red-600 font-semibold text-lg">Listening...</span>
+                    <span className="text-red-600 font-semibold text-sm sm:text-lg">Listening...</span>
                   </div>
-                  <p className="text-sm text-slate-600">Speak clearly into your device</p>
+                  <p className="text-xs sm:text-sm text-slate-600">Speak clearly into your device</p>
                 </div>
               )}
 
@@ -285,36 +319,34 @@ export default function ChatPage() {
                 <div className="mb-2">
                   <div className="flex items-center justify-center gap-2">
                     <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                    <span className="text-blue-600 font-semibold text-lg">Speaking...</span>
+                    <span className="text-blue-600 font-semibold text-sm sm:text-lg">Speaking...</span>
                   </div>
-                  <p className="text-sm text-slate-600">AI is providing guidance</p>
+                  <p className="text-xs sm:text-sm text-slate-600">AI is providing guidance</p>
                 </div>
+              )}
+
+              {!isListening && !isSpeaking && (
+                <p className="text-slate-600 text-sm sm:text-lg">
+                  💬 Type your message below or use voice input for hands-free help
+                </p>
               )}
             </div>
 
             <Button
               size="lg"
               onClick={() => window.open("tel:911")}
-              className="w-14 h-14 rounded-full bg-red-600 hover:bg-red-700 border-0 shadow-lg"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-600 hover:bg-red-700 border-0 shadow-lg"
             >
-              <Phone className="w-6 h-6" />
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
             </Button>
           </div>
-
-          {!isListening && !isSpeaking && (
-            <div className="text-center mb-4">
-              <p className="text-slate-600 text-lg">
-                💬 Type your message below or use voice input for hands-free help
-              </p>
-            </div>
-          )}
         </div>
       </div>
 
       {/* Input Area */}
-      <div className="bg-white/90 backdrop-blur-sm border-t-2 border-blue-100 p-4">
+      <div className="bg-white/90 backdrop-blur-sm border-t-2 border-blue-100 p-3 sm:p-4">
         <div className="max-w-4xl mx-auto">
-          <div className="flex gap-3 items-end">
+          <div className="flex gap-2 sm:gap-3 items-end">
             <div className="flex-1">
               <Textarea
                 ref={textareaRef}
@@ -322,7 +354,7 @@ export default function ChatPage() {
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder={isListening ? "Listening..." : "Type your message or tap the mic to speak..."}
-                className="min-h-[60px] max-h-32 text-lg p-4 rounded-2xl border-2 border-blue-200 focus:border-blue-500 resize-none bg-white"
+                className="min-h-[50px] sm:min-h-[60px] max-h-32 text-sm sm:text-lg p-3 sm:p-4 rounded-2xl border-2 border-blue-200 focus:border-blue-500 resize-none bg-white"
                 disabled={isListening}
               />
             </div>
@@ -331,29 +363,29 @@ export default function ChatPage() {
               <Button
                 size="lg"
                 onClick={toggleVoiceInput}
-                className={`w-14 h-14 rounded-full ${isListening ? "bg-red-500 hover:bg-red-600 animate-pulse" : "bg-blue-500 hover:bg-blue-600"}`}
+                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full ${isListening ? "bg-red-500 hover:bg-red-600 animate-pulse" : "bg-blue-500 hover:bg-blue-600"}`}
               >
-                <Mic className="w-6 h-6" />
+                <Mic className="w-5 h-5 sm:w-6 sm:h-6" />
               </Button>
 
               <Button
                 size="lg"
                 onClick={() => sendMessage(inputText)}
                 disabled={!inputText.trim() || isListening}
-                className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 disabled:opacity-50"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-green-500 hover:bg-green-600 disabled:opacity-50"
               >
-                <Send className="w-6 h-6" />
+                <Send className="w-5 h-5 sm:w-6 sm:h-6" />
               </Button>
             </div>
           </div>
 
           {/* Quick Response Buttons */}
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
             <Button
               variant="outline"
               size="sm"
               onClick={() => sendMessage("Yes")}
-              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-lg px-6 py-2 rounded-full"
+              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-sm sm:text-lg px-4 sm:px-6 py-2 rounded-full"
             >
               ✅ Yes
             </Button>
@@ -361,7 +393,7 @@ export default function ChatPage() {
               variant="outline"
               size="sm"
               onClick={() => sendMessage("No")}
-              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-lg px-6 py-2 rounded-full"
+              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-sm sm:text-lg px-4 sm:px-6 py-2 rounded-full"
             >
               ❌ No
             </Button>
@@ -369,7 +401,7 @@ export default function ChatPage() {
               variant="outline"
               size="sm"
               onClick={() => sendMessage("I need help")}
-              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-lg px-6 py-2 rounded-full"
+              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-sm sm:text-lg px-4 sm:px-6 py-2 rounded-full"
             >
               🆘 I need help
             </Button>
@@ -377,7 +409,7 @@ export default function ChatPage() {
               variant="outline"
               size="sm"
               onClick={() => sendMessage("What should I do next?")}
-              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-lg px-6 py-2 rounded-full"
+              className="bg-white/80 border-blue-200 hover:bg-blue-50 text-sm sm:text-lg px-4 sm:px-6 py-2 rounded-full"
             >
               ❓ What next?
             </Button>
