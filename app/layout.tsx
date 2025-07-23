@@ -6,33 +6,33 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Lifeline AI - Real-Time First Aid Assistant",
+  title: "LubTub - Real-Time Assistant",
   description:
     "AI-powered voice assistant that guides users through emergency situations with real-time voice responses.",
-  keywords: "emergency, first aid, AI assistant, voice guidance, medical emergency, lifeline, emergency response",
-  authors: [{ name: "Lifeline AI Team" }],
-  creator: "Lifeline AI",
-  publisher: "Lifeline AI",
+  keywords: "emergency, first aid, AI assistant, voice guidance, medical emergency, lubtub, emergency response",
+  authors: [{ name: "LubTub Team" }],
+  creator: "LubTub",
+  publisher: "LubTub",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://lifeline-ai.vercel.app"),
+  metadataBase: new URL("https://lubtub.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Lifeline AI - Emergency First Aid Assistant",
+    title: "LubTub - Emergency First Aid Assistant",
     description: "Get instant AI-powered emergency guidance with voice assistance in multiple languages",
-    url: "https://lifeline-ai.vercel.app",
-    siteName: "Lifeline AI",
+    url: "https://lubtub.vercel.app",
+    siteName: "LubTub",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Lifeline AI Emergency Assistant",
+        alt: "LubTub Emergency Assistant",
       },
     ],
     locale: "en_US",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lifeline AI - Emergency First Aid Assistant",
+    title: "LubTub - Emergency First Aid Assistant",
     description: "Get instant AI-powered emergency guidance with voice assistance",
     images: ["/twitter-image.png"],
   },
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Lifeline AI",
+    title: "LubTub",
   },
     generator: 'v0.dev'
 }
@@ -102,10 +102,11 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Lifeline AI" />
-        <meta name="application-name" content="Lifeline AI" />
+        <meta name="apple-mobile-web-app-title" content="LubTub" />
+        <meta name="application-name" content="LubTub" />
         <meta name="msapplication-TileColor" content="#2563eb" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.className} antialiased`}>
         {children}

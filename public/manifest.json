@@ -1,6 +1,6 @@
 {
-  "name": "Lifeline AI - Emergency Assistant",
-  "short_name": "Lifeline AI",
+  "name": "LubTub - Emergency Assistant",
+  "short_name": "LubTub",
   "description": "AI-powered voice assistant for emergency situations with real-time guidance",
   "start_url": "/",
   "display": "standalone",

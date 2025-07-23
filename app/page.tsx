@@ -7,6 +7,8 @@ import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import LanguageModal from "@/components/language-modal"
 import AccessibilityPanel from "@/components/accessibility-panel"
+import VoiceAssistant from '@/components/VoiceAssistant';
+
 
 export default function HomePage() {
   const [showLanguageModal, setShowLanguageModal] = useState(false)
@@ -19,11 +21,9 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
+              <img src="/circle_logo.png" alt="LubTub Logo" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-blue-600" />
               <div className="text-center sm:text-left">
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800">Lifeline AI</h1>
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800">LubTub</h1>
                 <p className="text-sm sm:text-base text-slate-600">Real-Time First Aid Assistant</p>
               </div>
             </div>
@@ -68,8 +68,7 @@ export default function HomePage() {
                   Emergency Assistance
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                  Stay calm. We'll guide you until help arrives. Get real-time voice assistance for any emergency
-                  situation.
+                Real help. Real-time. Right when you need it most.
                 </p>
               </div>
 
@@ -91,7 +90,7 @@ export default function HomePage() {
 
           {/* Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
-            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 hover:shadow-lg transition-all duration-200 rounded-2xl">
+            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="text-center">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                   <Play className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600" />
@@ -103,7 +102,7 @@ export default function HomePage() {
               </div>
             </Card>
 
-            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 hover:shadow-lg transition-all duration-200 rounded-2xl">
+            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="text-center">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                   <Globe className="w-6 h-6 sm:w-7 sm:h-7 text-green-600" />
@@ -115,7 +114,7 @@ export default function HomePage() {
               </div>
             </Card>
 
-            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 hover:shadow-lg transition-all duration-200 rounded-2xl sm:col-span-2 lg:col-span-1">
+            <Card className="p-4 sm:p-6 bg-white/70 backdrop-blur-sm border-blue-100 rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-2xl sm:col-span-2 lg:col-span-1">
               <div className="text-center">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                   <Settings className="w-6 h-6 sm:w-7 sm:h-7 text-purple-600" />
@@ -139,15 +138,7 @@ export default function HomePage() {
                 How It Works
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => setShowLanguageModal(true)}
-              className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg border-2 border-blue-200 hover:bg-blue-50 rounded-xl"
-            >
-              <Globe className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              Choose Language
-            </Button>
+           
           </div>
         </div>
       </main>
