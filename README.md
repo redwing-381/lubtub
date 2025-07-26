@@ -42,6 +42,8 @@
 
 ## 🏗️ Architecture
 
+![LubTub Architecture](lubtub.png)
+
 ### Frontend (Next.js)
 - Modern, responsive UI with professional design
 - Real-time WebSocket communication
