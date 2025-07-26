@@ -23,7 +23,7 @@ export default function AudioRecorder({ onTranscribe }: { onTranscribe: (text: s
       formData.append("file", blob, "voice.webm");
 
       console.log("Sending audio to transcribe endpoint...");
-      const res = await fetch("https://lubtub.onrender.com/transcribe/", {
+      const res = await fetch("http://localhost:8000/transcribe/", {
         method: "POST",
         body: formData,
       });

@@ -102,7 +102,7 @@ export const useVoiceAgent = () => {
 
   useEffect(() => {
     // Connect to the new ADK agent WebSocket with voice enabled
-    const wsUrl = `wss://lubtub.onrender.com/ws/${sessionId.current}?is_audio=true`;
+    const wsUrl = `ws://localhost:8000/ws/${sessionId.current}?is_audio=true`;
     console.log("Attempting to connect to:", wsUrl);
     
     try {
