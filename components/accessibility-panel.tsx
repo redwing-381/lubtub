@@ -56,91 +56,91 @@ export default function AccessibilityPanel({ isOpen, onClose }: AccessibilityPan
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-md mx-auto bg-white/98 backdrop-blur-sm border-2 border-blue-200 rounded-3xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="pb-4">
-          <DialogTitle className="text-xl md:text-2xl font-bold text-slate-800 text-center flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
-            <span className="text-2xl md:text-3xl">♿</span>
-            <span>Accessibility Options</span>
+      <DialogContent className="w-[95vw] max-w-md mx-auto bg-white shadow-2xl border-4 border-blue-400 rounded-3xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader className="pb-6 bg-blue-50 -m-6 mb-0 p-6 rounded-t-3xl border-b-2 border-blue-200">
+          <DialogTitle className="text-2xl md:text-3xl font-bold text-gray-900 text-center flex flex-col md:flex-row items-center justify-center gap-3">
+            <span className="text-3xl md:text-4xl">♿</span>
+            <span className="text-blue-800">Accessibility Options</span>
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-4 md:space-y-6 px-2">
+        <div className="space-y-6 px-2 py-4">
           {/* Font Size */}
-          <div className="space-y-3">
+          <div className="space-y-4 bg-gray-50 p-4 rounded-2xl border border-gray-200">
             <div className="flex items-center gap-3">
-              <Type className="w-5 h-5 md:w-6 md:h-6 text-blue-600 flex-shrink-0" />
-              <label className="text-base md:text-lg font-semibold text-slate-800">Text Size</label>
+              <Type className="w-6 h-6 text-blue-700 flex-shrink-0" />
+              <label className="text-lg font-bold text-gray-900">Text Size</label>
             </div>
-            <div className="px-2 md:px-4">
+            <div className="px-4">
               <Slider value={fontSize} onValueChange={setFontSize} max={28} min={14} step={2} className="w-full" />
-              <div className="flex justify-between text-xs md:text-sm text-slate-600 mt-1">
+              <div className="flex justify-between text-sm font-semibold text-gray-700 mt-2">
                 <span>Small</span>
-                <span className="font-semibold">{fontSize[0]}px</span>
+                <span className="text-blue-600 text-base">{fontSize[0]}px</span>
                 <span>Large</span>
               </div>
             </div>
           </div>
 
           {/* High Contrast */}
-          <div className="flex items-center justify-between p-3 md:p-4 bg-slate-50 rounded-2xl">
+          <div className="flex items-center justify-between p-4 bg-white rounded-2xl border-2 border-gray-300 shadow-sm">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Contrast className="w-5 h-5 md:w-6 md:h-6 text-blue-600 flex-shrink-0" />
+              <Contrast className="w-6 h-6 text-blue-700 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <p className="text-base md:text-lg font-semibold text-slate-800 truncate">High Contrast</p>
-                <p className="text-xs md:text-sm text-slate-600">Better visibility for low vision</p>
+                <p className="text-lg font-bold text-gray-900">High Contrast</p>
+                <p className="text-sm font-medium text-gray-700">Better visibility for low vision</p>
               </div>
             </div>
-            <Switch checked={highContrast} onCheckedChange={setHighContrast} className="flex-shrink-0 ml-2" />
+            <Switch checked={highContrast} onCheckedChange={setHighContrast} className="flex-shrink-0 ml-2 scale-125" />
           </div>
 
           {/* Reduce Motion */}
-          <div className="flex items-center justify-between p-3 md:p-4 bg-slate-50 rounded-2xl">
+          <div className="flex items-center justify-between p-4 bg-white rounded-2xl border-2 border-gray-300 shadow-sm">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Eye className="w-5 h-5 md:w-6 md:h-6 text-blue-600 flex-shrink-0" />
+              <Eye className="w-6 h-6 text-blue-700 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <p className="text-base md:text-lg font-semibold text-slate-800 truncate">Reduce Motion</p>
-                <p className="text-xs md:text-sm text-slate-600">Minimize animations</p>
+                <p className="text-lg font-bold text-gray-900">Reduce Motion</p>
+                <p className="text-sm font-medium text-gray-700">Minimize animations</p>
               </div>
             </div>
-            <Switch checked={reduceMotion} onCheckedChange={setReduceMotion} className="flex-shrink-0 ml-2" />
+            <Switch checked={reduceMotion} onCheckedChange={setReduceMotion} className="flex-shrink-0 ml-2 scale-125" />
           </div>
 
           {/* Large Touch Targets */}
-          <div className="flex items-center justify-between p-3 md:p-4 bg-slate-50 rounded-2xl">
+          <div className="flex items-center justify-between p-4 bg-white rounded-2xl border-2 border-gray-300 shadow-sm">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Hand className="w-5 h-5 md:w-6 md:h-6 text-blue-600 flex-shrink-0" />
+              <Hand className="w-6 h-6 text-blue-700 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <p className="text-base md:text-lg font-semibold text-slate-800 truncate">Large Touch Targets</p>
-                <p className="text-xs md:text-sm text-slate-600">Easier to tap when stressed</p>
+                <p className="text-lg font-bold text-gray-900">Large Touch Targets</p>
+                <p className="text-sm font-medium text-gray-700">Easier to tap when stressed</p>
               </div>
             </div>
-            <Switch checked={largeButtons} onCheckedChange={setLargeButtons} className="flex-shrink-0 ml-2" />
+            <Switch checked={largeButtons} onCheckedChange={setLargeButtons} className="flex-shrink-0 ml-2 scale-125" />
           </div>
 
           {/* Voice-First Mode */}
-          <div className="flex items-center justify-between p-3 md:p-4 bg-blue-50 rounded-2xl border-2 border-blue-200">
+          <div className="flex items-center justify-between p-4 bg-blue-100 rounded-2xl border-2 border-blue-400 shadow-sm">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Mic className="w-5 h-5 md:w-6 md:h-6 text-blue-600 flex-shrink-0" />
+              <Mic className="w-6 h-6 text-blue-700 flex-shrink-0" />
               <div className="min-w-0 flex-1">
-                <p className="text-base md:text-lg font-semibold text-slate-800 truncate">Voice-First Mode</p>
-                <p className="text-xs md:text-sm text-slate-600">Prioritize audio interaction</p>
+                <p className="text-lg font-bold text-gray-900">Voice-First Mode</p>
+                <p className="text-sm font-medium text-gray-700">Prioritize audio interaction</p>
               </div>
             </div>
-            <Switch checked={voiceOnly} onCheckedChange={setVoiceOnly} className="flex-shrink-0 ml-2" />
+            <Switch checked={voiceOnly} onCheckedChange={setVoiceOnly} className="flex-shrink-0 ml-2 scale-125" />
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-200">
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t-2 border-gray-200">
             <Button
               variant="outline"
               onClick={onClose}
-              className="flex-1 h-12 md:h-14 text-base md:text-lg border-2 border-slate-300 hover:bg-slate-50 rounded-2xl bg-transparent"
+              className="flex-1 h-14 text-lg font-semibold border-3 border-gray-400 hover:bg-gray-100 rounded-2xl bg-white text-gray-800"
             >
               Cancel
             </Button>
             <Button
               onClick={applySettings}
-              className="flex-1 h-12 md:h-14 text-base md:text-lg bg-blue-600 hover:bg-blue-700 rounded-2xl"
+              className="flex-1 h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 rounded-2xl text-white shadow-lg"
             >
               Apply Settings
             </Button>

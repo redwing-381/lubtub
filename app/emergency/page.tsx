@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import EmotionalSupport from "@/components/emotional-support"
 import InstructionCard from "@/components/instruction-card"
+import EmergencyContacts from "@/components/emergency-contacts"
 
 export default function EmergencyPage() {
   const [elapsedTime, setElapsedTime] = useState(0)
@@ -51,6 +52,29 @@ export default function EmergencyPage() {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
     return `${mins}:${secs.toString().padStart(2, "0")}`
+  }
+
+  const call911 = () => {
+    try {
+      // For mobile devices, use tel: protocol
+      if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+        window.location.href = "tel:911"
+      } else {
+        // For desktop, show confirmation
+        const confirmed = confirm("This will open your phone app to call 911. Continue?")
+        if (confirmed) {
+          window.open("tel:911", "_self")
+        }
+      }
+    } catch (error) {
+      // Fallback alert with phone number
+      alert("Please dial 911 immediately for emergency services.")
+    }
+  }
+
+  const restartGuide = () => {
+    setCurrentStep(0)
+    setElapsedTime(0)
   }
 
   return (
@@ -111,7 +135,11 @@ export default function EmergencyPage() {
 
             {/* Emergency Actions */}
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Button size="lg" className="h-14 bg-red-600 hover:bg-red-700 text-white rounded-xl">
+              <Button 
+                size="lg" 
+                className="h-14 bg-red-600 hover:bg-red-700 text-white rounded-xl"
+                onClick={call911}
+              >
                 <Phone className="w-5 h-5 mr-2" />
                 Call 911
               </Button>
@@ -119,11 +147,17 @@ export default function EmergencyPage() {
                 size="lg"
                 variant="outline"
                 className="h-14 border-blue-200 hover:bg-blue-50 rounded-xl bg-transparent"
+                onClick={restartGuide}
               >
                 <RotateCcw className="w-5 h-5 mr-2" />
                 Restart Guide
               </Button>
             </div>
+
+            {/* Emergency Contacts */}
+            <Card className="mt-6 p-6 bg-white/70 backdrop-blur-sm border-blue-100">
+              <EmergencyContacts />
+            </Card>
           </div>
         </main>
 

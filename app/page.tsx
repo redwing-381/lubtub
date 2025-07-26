@@ -1,18 +1,39 @@
 "use client"
 
 import { useState } from "react"
-import { AlertTriangle, Globe, Settings, Play, Heart } from "lucide-react"
+import { AlertTriangle, Globe, Settings, Play, Heart, Phone, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import LanguageModal from "@/components/language-modal"
 import AccessibilityPanel from "@/components/accessibility-panel"
+import EmergencyContacts from "@/components/emergency-contacts"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import VoiceAssistant from '@/components/VoiceAssistant';
 
 
 export default function HomePage() {
   const [showLanguageModal, setShowLanguageModal] = useState(false)
   const [showAccessibilityPanel, setShowAccessibilityPanel] = useState(false)
+  const [showEmergencyContacts, setShowEmergencyContacts] = useState(false)
+
+  const call911 = () => {
+    try {
+      // For mobile devices, use tel: protocol
+      if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+        window.location.href = "tel:911"
+      } else {
+        // For desktop, show confirmation
+        const confirmed = confirm("This will open your phone app to call 911. Continue?")
+        if (confirmed) {
+          window.open("tel:911", "_self")
+        }
+      }
+    } catch (error) {
+      // Fallback alert with phone number
+      alert("Please dial 911 immediately for emergency services.")
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
@@ -33,21 +54,19 @@ export default function HomePage() {
                 variant="outline"
                 size="sm"
                 onClick={() => setShowLanguageModal(true)}
-                className="h-10 sm:h-12 px-3 sm:px-4 rounded-xl border-2 border-blue-200 hover:bg-blue-50"
+                className="h-12 sm:h-14 px-4 sm:px-6 rounded-xl border-2 border-blue-300 hover:bg-blue-50 bg-white shadow-md font-medium text-blue-700 hover:text-blue-800"
               >
-                <Globe className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="hidden sm:inline">Language</span>
-                <span className="sm:hidden">🌐</span>
+                <Globe className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+                <span className="text-sm sm:text-base">Language</span>
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setShowAccessibilityPanel(true)}
-                className="h-10 sm:h-12 px-3 sm:px-4 rounded-xl border-2 border-blue-200 hover:bg-blue-50"
+                className="h-12 sm:h-14 px-4 sm:px-6 rounded-xl border-2 border-blue-300 hover:bg-blue-50 bg-white shadow-md font-medium text-blue-700 hover:text-blue-800"
               >
-                <Settings className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="hidden sm:inline">Accessibility</span>
-                <span className="sm:hidden">♿</span>
+                <Settings className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+                <span className="text-sm sm:text-base">Accessibility</span>
               </Button>
             </div>
           </div>
@@ -85,6 +104,30 @@ export default function HomePage() {
               <p className="text-xs sm:text-sm text-slate-500 mt-4 sm:mt-6">
                 Available 24/7 • Voice-guided assistance • Multiple languages
               </p>
+            </div>
+          </Card>
+
+          {/* Quick Emergency Actions */}
+          <Card className="p-6 bg-white/70 backdrop-blur-sm border-2 border-red-200 shadow-xl rounded-3xl mb-8">
+            <h3 className="text-xl font-bold text-slate-800 text-center mb-6">Quick Emergency Actions</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Button 
+                size="lg" 
+                className="h-16 bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-lg font-bold text-lg"
+                onClick={call911}
+              >
+                <Phone className="w-6 h-6 mr-3" />
+                Call 911 Now
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-16 border-2 border-blue-300 hover:bg-blue-50 rounded-2xl bg-white shadow-lg font-bold text-lg text-blue-700"
+                onClick={() => setShowEmergencyContacts(true)}
+              >
+                <Users className="w-6 h-6 mr-3" />
+                Emergency Contacts
+              </Button>
             </div>
           </Card>
 
@@ -146,6 +189,21 @@ export default function HomePage() {
       {/* Modals */}
       <LanguageModal isOpen={showLanguageModal} onClose={() => setShowLanguageModal(false)} />
       <AccessibilityPanel isOpen={showAccessibilityPanel} onClose={() => setShowAccessibilityPanel(false)} />
+      
+      {/* Emergency Contacts Modal */}
+      <Dialog open={showEmergencyContacts} onOpenChange={setShowEmergencyContacts}>
+        <DialogContent className="w-[95vw] max-w-2xl mx-auto bg-white shadow-2xl border-4 border-blue-400 rounded-3xl max-h-[90vh] overflow-hidden">
+          <DialogHeader className="pb-6 bg-blue-50 -m-6 mb-0 p-6 rounded-t-3xl border-b-2 border-blue-200">
+            <DialogTitle className="text-2xl md:text-3xl font-bold text-gray-900 text-center flex flex-col md:flex-row items-center justify-center gap-3">
+              <Users className="w-8 h-8 text-blue-700" />
+              <span className="text-blue-800">Emergency Contacts</span>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="p-6">
+            <EmergencyContacts />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

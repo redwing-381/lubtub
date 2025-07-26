@@ -39,16 +39,16 @@ export default function LanguageModal({ isOpen, onClose }: LanguageModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-lg mx-auto bg-white/98 backdrop-blur-sm border-2 border-blue-200 rounded-3xl max-h-[90vh] overflow-hidden">
-        <DialogHeader className="pb-4">
-          <DialogTitle className="text-xl md:text-2xl font-bold text-slate-800 text-center flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
-            <span className="text-2xl md:text-3xl">🌐</span>
-            <span>Choose Your Language</span>
+      <DialogContent className="w-[95vw] max-w-lg mx-auto bg-white shadow-2xl border-4 border-blue-400 rounded-3xl max-h-[90vh] overflow-hidden">
+        <DialogHeader className="pb-6 bg-blue-50 -m-6 mb-0 p-6 rounded-t-3xl border-b-2 border-blue-200">
+          <DialogTitle className="text-2xl md:text-3xl font-bold text-gray-900 text-center flex flex-col md:flex-row items-center justify-center gap-3">
+            <span className="text-3xl md:text-4xl">🌐</span>
+            <span className="text-blue-800">Choose Your Language</span>
           </DialogTitle>
         </DialogHeader>
 
-        <div className="px-2">
-          <p className="text-base md:text-lg text-slate-700 text-center mb-4 md:mb-6 font-medium">
+        <div className="px-4 py-4">
+          <p className="text-lg font-semibold text-gray-800 text-center mb-6 bg-blue-50 p-3 rounded-xl border border-blue-200">
             Select your preferred language for emergency voice guidance
           </p>
 
@@ -56,22 +56,22 @@ export default function LanguageModal({ isOpen, onClose }: LanguageModalProps) {
             {languages.map((lang) => (
               <div
                 key={lang.code}
-                className={`flex items-center justify-between p-3 md:p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                className={`flex items-center justify-between p-4 rounded-2xl border-2 cursor-pointer transition-all shadow-sm ${
                   selectedLanguage === lang.code
-                    ? "border-blue-500 bg-blue-50 shadow-md"
-                    : "border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 bg-white"
+                    ? "border-blue-600 bg-blue-100 shadow-md"
+                    : "border-gray-300 hover:border-blue-400 hover:bg-blue-50 bg-white"
                 }`}
                 onClick={() => setSelectedLanguage(lang.code)}
               >
-                <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
-                  <span className="text-2xl md:text-3xl flex-shrink-0">{lang.flag}</span>
+                <div className="flex items-center gap-4 flex-1 min-w-0">
+                  <span className="text-3xl flex-shrink-0">{lang.flag}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-base md:text-lg font-semibold text-slate-800 truncate">{lang.name}</p>
-                    <p className="text-xs md:text-sm text-slate-700 italic leading-tight">{lang.sample}</p>
+                    <p className="text-lg font-bold text-gray-900">{lang.name}</p>
+                    <p className="text-sm font-medium text-gray-700 italic leading-tight">{lang.sample}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 md:gap-3 flex-shrink-0 ml-2">
+                <div className="flex items-center gap-3 flex-shrink-0 ml-2">
                   <Button
                     size="sm"
                     variant="ghost"
@@ -79,19 +79,19 @@ export default function LanguageModal({ isOpen, onClose }: LanguageModalProps) {
                       e.stopPropagation()
                       playPreview(lang.code)
                     }}
-                    className="w-8 h-8 md:w-10 md:h-10 rounded-full hover:bg-blue-100 border-2 border-blue-200 bg-white"
+                    className="w-10 h-10 rounded-full hover:bg-blue-200 border-2 border-blue-300 bg-blue-50"
                     aria-label={`Preview ${lang.name} voice`}
                   >
                     {playingPreview === lang.code ? (
-                      <Volume2 className="w-3 h-3 md:w-4 md:h-4 text-blue-600 animate-pulse" />
+                      <Volume2 className="w-4 h-4 text-blue-700 animate-pulse" />
                     ) : (
-                      <Play className="w-3 h-3 md:w-4 md:h-4 text-blue-600" />
+                      <Play className="w-4 h-4 text-blue-700" />
                     )}
                   </Button>
 
                   {selectedLanguage === lang.code && (
-                    <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-3 h-3 md:w-5 md:h-5 text-white" />
+                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <Check className="w-5 h-5 text-white font-bold" />
                     </div>
                   )}
                 </div>
@@ -99,17 +99,17 @@ export default function LanguageModal({ isOpen, onClose }: LanguageModalProps) {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-6 md:mt-8 pt-4 border-t border-slate-200">
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t-2 border-gray-200">
             <Button
               variant="outline"
               onClick={onClose}
-              className="flex-1 h-12 md:h-14 text-base md:text-lg border-2 border-slate-300 hover:bg-slate-50 rounded-2xl bg-white"
+              className="flex-1 h-14 text-lg font-semibold border-3 border-gray-400 hover:bg-gray-100 rounded-2xl bg-white text-gray-800"
             >
               Cancel
             </Button>
             <Button
               onClick={handleSave}
-              className="flex-1 h-12 md:h-14 text-base md:text-lg bg-blue-600 hover:bg-blue-700 rounded-2xl text-white"
+              className="flex-1 h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 rounded-2xl text-white shadow-lg"
             >
               Save Language
             </Button>
