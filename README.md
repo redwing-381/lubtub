@@ -1,30 +1,127 @@
-# Lifeline ai design
+# LubTub AI - Emergency Response Assistant
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+**Murf Coding Challenge 3 Submission**
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/solaimuthus-projects/v0-lifeline-ai-design)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/uJe8OosIML6)
+[![Deployed on Render](https://img.shields.io/badge/Deployed%20on-Render-black?style=for-the-badge&logo=render)](https://lubtub.onrender.com)
+[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Powered by Murf AI](https://img.shields.io/badge/Powered%20by-Murf%20AI-red?style=for-the-badge)](https://murf.ai)
 
-## Overview
+## 🚨 Project Overview
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+**LubTub AI** is an intelligent emergency response assistant designed to provide immediate guidance and support during critical situations. Built with cutting-edge AI technology, it offers real-time emergency assessment, step-by-step instructions, and emotional support when every second counts.
 
-## Deployment
+### 🎯 Key Features
 
-Your project is live at:
+- **🆘 Emergency Assessment**: Rapid evaluation of emergency situations
+- **📋 Step-by-Step Guidance**: Clear, actionable instructions for various emergencies
+- **🎤 Voice Interaction**: Natural voice input and output for hands-free operation
+- **💬 Real-time Chat**: Instant communication with AI assistant
+- **📞 Emergency Contact Integration**: Direct emergency service connections
+- **❤️ Emotional Support**: Compassionate guidance during stressful situations
+- **🔊 Text-to-Speech**: Natural voice responses powered by Murf AI
 
-**[https://vercel.com/solaimuthus-projects/v0-lifeline-ai-design](https://vercel.com/solaimuthus-projects/v0-lifeline-ai-design)**
+### 🛠️ Technology Stack
 
-## Build your app
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **Backend**: FastAPI, Python, Google ADK (Agent Development Kit)
+- **AI**: Google Gemini API, Murf AI Text-to-Speech
+- **Communication**: WebSockets, Real-time audio streaming
+- **Deployment**: Render (Backend), Vercel (Frontend)
 
-Continue building your app on:
+## 👥 Developed By
 
-**[https://v0.dev/chat/projects/uJe8OosIML6](https://v0.dev/chat/projects/uJe8OosIML6)**
+**Team Members:**
+- **Merlyn Natasha Michelle - Backend**
+- **Solaimuthu - frontend**
 
-## How It Works
+**For:** Murf Coding Challenge 3 Submission
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## 🚀 Live Demo
+
+- **Application**: [https://lubtub.vercel.app]
+
+## 🏗️ Architecture
+
+### Frontend (Next.js)
+- Modern, responsive UI with professional design
+- Real-time WebSocket communication
+- Voice recording and playback capabilities
+- Emergency-focused user experience
+
+### Backend (FastAPI + Google ADK)
+- Intelligent emergency response system
+- Real-time audio processing
+- Integration with emergency services
+- Comprehensive emergency assessment tools
+
+### AI Integration
+- **Google ADK**: Advanced AI agent for emergency response
+- **Murf AI**: High-quality text-to-speech synthesis
+- **Gemini API**: Natural language understanding and generation
+
+## 🎨 Design Philosophy
+
+Our design focuses on:
+- **Accessibility**: Easy-to-use interface for emergency situations
+- **Reliability**: Robust, always-available service
+- **Compassion**: Supportive, non-judgmental assistance
+- **Speed**: Rapid response times when seconds matter
+- **Clarity**: Clear, actionable guidance
+
+## 🔧 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- Python 3.10+
+- Google API Key
+- Murf AI API Key
+
+### Frontend Setup
+```bash
+npm install
+npm run dev
+```
+
+### Backend Setup
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+## 📱 Usage
+
+1. **Access the Application**: Visit the deployed URL
+2. **Describe Emergency**: Type or speak your emergency situation
+3. **Receive Guidance**: Get immediate, step-by-step instructions
+4. **Follow Instructions**: Execute the provided emergency procedures
+5. **Get Support**: Receive emotional support and additional guidance
+
+## 🎯 Emergency Scenarios Supported
+
+- Cardiac emergencies (CPR guidance)
+- Bleeding control
+- Choking relief
+- Unconscious person assessment
+- Seizure management
+- Accident response
+- Emotional crisis support
+
+## 🔒 Security & Privacy
+
+- Secure WebSocket connections (WSS)
+- HTTPS encryption for all communications
+- No personal data storage
+- Emergency-focused data handling
+
+## 📄 License
+
+This project is developed for the Murf Coding Challenge 3 submission.
+
+## 🤝 Contributing
+
+This is a submission for Murf Coding Challenge 3. For questions or feedback, please contact the development team.
+
+---
+
+**Built with ❤️ for emergency response and community safety**

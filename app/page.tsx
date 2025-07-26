@@ -93,7 +93,7 @@ export default function HomePage() {
 
                             <Button
                 size="lg"
-                onClick={() => window.open('http://localhost:8000', '_blank')}
+                onClick={() => window.open('https://lubtub.onrender.com', '_blank')}
                 className="w-full sm:w-auto h-14 sm:h-16 lg:h-18 px-8 sm:px-12 lg:px-16 text-lg sm:text-xl lg:text-2xl font-semibold bg-red-600 hover:bg-red-700 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-200"
               >
                 <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-3" />
