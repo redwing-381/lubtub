@@ -29,11 +29,11 @@ def provide_choking_relief(
 5. Grasp fist with other hand
 6. Give quick, upward thrusts
 7. Continue until object is expelled or person becomes unconscious
-8. If unsuccessful after 5 attempts, call 911 immediately"""
+8. If unsuccessful after 5 attempts, call 108 immediately"""
             else:
                 return """CHOKING RELIEF - ADULT:
 1. Ask: "Are you choking?" (if they can speak, they're not choking)
-2. If they nod yes, call 911 immediately
+2. If they nod yes, call 108 immediately
 3. Perform Heimlich maneuver:
    - Stand behind person
    - Wrap arms around waist
@@ -44,7 +44,7 @@ def provide_choking_relief(
         elif victim_age == "child":
             return """CHOKING RELIEF - CHILD (1-8 years):
 1. Ask: "Are you choking?"
-2. Call 911 immediately
+2. Call 108 immediately
 3. Perform Heimlich maneuver:
    - Kneel behind child
    - Wrap arms around waist
@@ -55,7 +55,7 @@ def provide_choking_relief(
         
         elif victim_age == "infant":
             return """CHOKING RELIEF - INFANT (under 1 year):
-1. Call 911 immediately
+1. Call 108 immediately
 2. DO NOT perform Heimlich maneuver on infants
 3. Use back blows and chest thrusts:
    - Hold infant face down on your forearm
@@ -68,7 +68,7 @@ def provide_choking_relief(
         elif victim_age == "pregnant":
             return """CHOKING RELIEF - PREGNANT PERSON:
 1. Ask: "Are you choking?"
-2. Call 911 immediately
+2. Call 108 immediately
 3. Modified Heimlich maneuver:
    - Stand behind person
    - Place hands higher on chest (above baby bump)
@@ -77,7 +77,7 @@ def provide_choking_relief(
     
     elif consciousness_level == "unconscious":
         return """UNCONSCIOUS CHOKING VICTIM:
-1. Call 911 immediately
+1. Call 108 immediately
 2. Lower person to ground carefully
 3. Begin CPR:
    - 30 chest compressions

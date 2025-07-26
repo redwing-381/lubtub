@@ -93,14 +93,6 @@ export default function HowItWorksPage() {
               <p className="text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto">
                 Lifeline AI is here 24/7 to provide professional emergency guidance when you need it most.
               </p>
-              <Link href="/chat">
-                <Button
-                  size="lg"
-                  className="w-full sm:w-auto h-12 sm:h-14 lg:h-16 px-6 sm:px-8 lg:px-12 text-base sm:text-lg lg:text-xl bg-white text-blue-600 hover:bg-blue-50 font-semibold rounded-xl sm:rounded-2xl"
-                >
-                  Start Emergency Aid
-                </Button>
-              </Link>
             </Card>
           </div>
         </div>

@@ -42,7 +42,7 @@ def control_bleeding(
     
     elif bleeding_type == "severe" or severity == "heavy":
         instructions += """SEVERE BLEEDING CONTROL:
-1. CALL 911 IMMEDIATELY
+1. CALL 108 IMMEDIATELY
 2. Apply direct pressure with clean cloth or gauze
 3. Use both hands if necessary
 4. Elevate the injured area above heart level
@@ -52,7 +52,7 @@ def control_bleeding(
     
     elif bleeding_type == "arterial" or severity == "life_threatening":
         instructions += """ARTERIAL/LIFE-THREATENING BLEEDING:
-1. CALL 911 IMMEDIATELY
+1. CALL 108 IMMEDIATELY
 2. Apply direct pressure with maximum force
 3. Use both hands and body weight if needed
 4. Elevate the injured area above heart level

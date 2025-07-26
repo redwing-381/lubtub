@@ -73,10 +73,10 @@
       ]
     },
     {
-      "name": "Call 911",
-      "short_name": "911",
+      "name": "Call 108",
+      "short_name": "108",
       "description": "Call emergency services",
-      "url": "tel:911",
+      "url": "tel:108",
       "icons": [
         {
           "src": "/icons/phone-shortcut.png",

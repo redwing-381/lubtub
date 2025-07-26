@@ -28,7 +28,7 @@ def provide_cpr_guidance(
         
         elif current_step == "call_help":
             return """STEP 2: Call for help
-1. Call emergency services (911) immediately
+1. Call emergency services (108) immediately
 2. Put phone on speaker if possible
 3. Continue with CPR while help is on the way"""
         
@@ -62,7 +62,7 @@ def provide_cpr_guidance(
         else:
             return """CPR FOR ADULTS - COMPLETE GUIDE:
 1. Check response and breathing
-2. Call 911 immediately
+2. Call 108 immediately
 3. Start chest compressions: 30 compressions
 4. Give 2 rescue breaths
 5. Continue cycle until help arrives
@@ -72,7 +72,7 @@ def provide_cpr_guidance(
     elif victim_age == "child":
         return """CPR FOR CHILDREN (1-8 years):
 1. Check response and breathing
-2. Call 911 immediately
+2. Call 108 immediately
 3. Use one or two hands for compressions
 4. Compress 1.5 inches deep
 5. Rate: 100-120 compressions per minute
@@ -81,7 +81,7 @@ def provide_cpr_guidance(
     elif victim_age == "infant":
         return """CPR FOR INFANTS (under 1 year):
 1. Check response and breathing
-2. Call 911 immediately
+2. Call 108 immediately
 3. Use 2 fingers for compressions
 4. Compress 1.5 inches deep
 5. Rate: 100-120 compressions per minute

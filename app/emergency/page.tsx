@@ -54,21 +54,21 @@ export default function EmergencyPage() {
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
-  const call911 = () => {
+  const call108 = () => {
     try {
       // For mobile devices, use tel: protocol
       if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-        window.location.href = "tel:911"
+        window.location.href = "tel:108"
       } else {
         // For desktop, show confirmation
-        const confirmed = confirm("This will open your phone app to call 911. Continue?")
+        const confirmed = confirm("This will open your phone app to call 108. Continue?")
         if (confirmed) {
-          window.open("tel:911", "_self")
+          window.open("tel:108", "_self")
         }
       }
     } catch (error) {
       // Fallback alert with phone number
-      alert("Please dial 911 immediately for emergency services.")
+      alert("Please dial 108 immediately for emergency services.")
     }
   }
 
@@ -138,10 +138,10 @@ export default function EmergencyPage() {
               <Button 
                 size="lg" 
                 className="h-14 bg-red-600 hover:bg-red-700 text-white rounded-xl"
-                onClick={call911}
+                onClick={call108}
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Call 911
+                Call 108
               </Button>
               <Button
                 size="lg"

@@ -42,11 +42,11 @@ export default function EmergencyHeader({ elapsedTime }: EmergencyHeaderProps) {
           <Button
             size="lg"
             className="bg-red-600 hover:bg-red-700 text-white rounded-xl px-4 py-2 shadow-lg"
-            onClick={() => window.open("tel:911")}
-            aria-label="Call 911 emergency services"
+            onClick={() => window.open("tel:108")}
+            aria-label="Call 108 emergency services"
           >
             <Phone className="w-5 h-5 mr-2" />
-            <span className="text-lg font-semibold">911</span>
+            <span className="text-lg font-semibold">108</span>
           </Button>
         </div>
 

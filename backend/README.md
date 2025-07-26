@@ -116,7 +116,7 @@ This will start the application server at `http://127.0.0.1:8000`. You can inter
 
 **IMPORTANT**: LubTub AI provides basic first-aid guidance only and is not a substitute for professional medical care.
 
-- Always call emergency services (911) for life-threatening situations
+- Always call emergency services (108) for life-threatening situations
 - The assistant provides guidance based on standard first-aid protocols
 - Users should follow local emergency procedures and regulations
 - Professional medical attention should always be sought when appropriate
