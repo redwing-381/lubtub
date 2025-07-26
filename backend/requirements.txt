@@ -3,3 +3,10 @@ uvicorn
 websockets
 requests
 pydantic
+openai
+murf
+whisper
+sounddevice
+numpy
+httpx
+python-dotenv 

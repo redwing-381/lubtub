@@ -29,15 +29,17 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+    border-width: 1px;
+    border-style: solid;
   }
+
   body {
     @apply bg-background text-foreground;
     font-size: 16px;
     line-height: 1.6;
   }
 
-  /* Mobile-first responsive typography */
   @media (min-width: 640px) {
     body {
       font-size: 18px;
@@ -45,7 +47,6 @@
   }
 }
 
-/* Accessibility Enhancements */
 .high-contrast {
   --background: 0 0% 100%;
   --foreground: 0 0% 0%;
@@ -108,7 +109,6 @@
   }
 }
 
-/* Focus indicators for accessibility */
 button:focus-visible,
 [role="button"]:focus-visible,
 textarea:focus-visible,
@@ -116,13 +116,11 @@ input:focus-visible {
   @apply ring-4 ring-blue-500 ring-offset-2 outline-none;
 }
 
-/* High contrast focus indicators */
 .high-contrast button:focus-visible,
 .high-contrast [role="button"]:focus-visible {
   @apply ring-4 ring-yellow-400 ring-offset-2;
 }
 
-/* Touch target improvements */
 @media (pointer: coarse) {
   button,
   [role="button"] {
@@ -131,7 +129,6 @@ input:focus-visible {
   }
 }
 
-/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse,
   .animate-ping {
@@ -144,7 +141,6 @@ input:focus-visible {
   }
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
   .bg-blue-50 {
     @apply bg-blue-200;
@@ -157,7 +153,6 @@ input:focus-visible {
   }
 }
 
-/* Screen reader optimizations */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -170,7 +165,6 @@ input:focus-visible {
   border: 0;
 }
 
-/* PWA specific styles */
 @media (display-mode: standalone) {
   body {
     padding-top: env(safe-area-inset-top);
@@ -178,14 +172,12 @@ input:focus-visible {
   }
 }
 
-/* Mobile viewport fixes */
 @supports (-webkit-touch-callout: none) {
   .min-h-screen {
     min-height: -webkit-fill-available;
   }
 }
 
-/* Responsive container queries */
 @container (max-width: 640px) {
   .container-responsive {
     padding: 1rem;
@@ -198,7 +190,6 @@ input:focus-visible {
   }
 }
 
-/* Emergency-specific responsive styles */
 .emergency-header {
   position: sticky;
   top: 0;
@@ -218,7 +209,6 @@ input:focus-visible {
   }
 }
 
-/* Chat message responsive styles */
 .chat-message {
   max-width: 90%;
 }
@@ -235,7 +225,6 @@ input:focus-visible {
   }
 }
 
-/* Input area responsive styles */
 .input-area {
   padding: 0.75rem 1rem;
 }
@@ -246,7 +235,6 @@ input:focus-visible {
   }
 }
 
-/* Progressive enhancement for advanced features */
 @supports (backdrop-filter: blur(8px)) {
   .backdrop-blur-enhanced {
     backdrop-filter: blur(12px);
