@@ -2,7 +2,7 @@
 
 **Murf Coding Challenge 3 Submission**
 
-[![Local Development](https://img.shields.io/badge/Local%20Development-localhost:8000-blue?style=for-the-badge&logo=localhost)](http://localhost:8000)
+[![Deployed on Render](https://img.shields.io/badge/Deployed%20on-Render-black?style=for-the-badge&logo=render)](https://lubtub.onrender.com)
 [![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![Powered by Murf AI](https://img.shields.io/badge/Powered%20by-Murf%20AI-red?style=for-the-badge)](https://murf.ai)
 
@@ -26,7 +26,7 @@
 - **Backend**: FastAPI, Python, Google ADK (Agent Development Kit)
 - **AI**: Google Gemini API, Murf AI Text-to-Speech
 - **Communication**: WebSockets, Real-time audio streaming
-- **Deployment**: Localhost (Backend), Vercel (Frontend)
+- **Deployment**: Render (Backend), Vercel (Frontend)
 
 ## 👥 Developed By
 
@@ -38,8 +38,7 @@
 
 ## 🚀 Live Demo
 
-- **Frontend**: [https://lubtub.vercel.app]
-- **Backend**: [http://localhost:8000]
+- **Application**: [https://lubtub.vercel.app]
 
 ## 🏗️ Architecture
 
