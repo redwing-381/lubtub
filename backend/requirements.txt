@@ -10,3 +10,4 @@ sounddevice
 numpy
 httpx
 python-dotenv 
+python-jose
