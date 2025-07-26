@@ -84,9 +84,13 @@ function connectWebsocket() {
       if (currentMessageId && role === "model") {
         const existingMessage = document.getElementById(currentMessageId);
         if (existingMessage) {
-          // Append the text without adding extra spaces
-          const textNode = document.createTextNode(message_from_server.data);
-          existingMessage.appendChild(textNode);
+          // Find the content element and append to it
+          const contentElement = existingMessage.querySelector('.message-content');
+          if (contentElement) {
+            // Append the text without adding extra spaces
+            const textNode = document.createTextNode(message_from_server.data);
+            contentElement.appendChild(textNode);
+          }
 
           // Play Murf TTS audio for agent message if audio is enabled
           if (is_audio) playAgentAudio(message_from_server.data);
