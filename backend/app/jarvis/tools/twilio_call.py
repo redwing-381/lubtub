@@ -5,8 +5,7 @@ from twilio.rest import Client
 # Contacts directly embedded in the code
 CONTACTS = {
     "brother": "+916380842552",
-    "friend": "+919444456265",
-    "family": "+919444"
+    "friend": "+919444456265"
 }
 
 DEFAULT_MESSAGE = "This is LubTub AI. There is a medical emergency. Please respond immediately."
