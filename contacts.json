@@ -1,0 +1,25 @@
+{
+  "_comment": "Emergency contacts for LubTub AI. Format: 'contact_name': 'phone_number'",
+  "_note": "Replace these sample numbers with real emergency contacts",
+  
+  "wife": "+15551234567",
+  "husband": "+15551234568", 
+  "father": "+15551234569",
+  "mother": "+15551234570",
+  "doctor": "+15551234571",
+  "emergency": "911",
+  "ambulance": "112",
+  "police": "100",
+  "fire": "101",
+  "neighbor": "+15551234572",
+  "friend": "+15551234573",
+  "sister": "+15551234574",
+  "brother": "+15551234575",
+  "son": "+15551234576",
+  "daughter": "+15551234577",
+  "spouse": "+15551234578",
+  "partner": "+15551234579",
+  "parent": "+15551234580",
+  "guardian": "+15551234581",
+  "caregiver": "+15551234582"
+} 
