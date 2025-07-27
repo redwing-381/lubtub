@@ -2,15 +2,18 @@ import os
 import json
 from twilio.rest import Client
 
-CONTACTS_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', '..', 'contacts.json')
+# Contacts directly embedded in the code
+CONTACTS = {
+    "brother": "+916380842552",
+    "friend": "+919444456265",
+    "family": "+919444"
+}
 
 DEFAULT_MESSAGE = "This is LubTub AI. There is a medical emergency. Please respond immediately."
 
 def get_contact_number(contact_name: str) -> str:
     """Look up the phone number for a contact name."""
-    with open(CONTACTS_FILE, 'r') as f:
-        contacts = json.load(f)
-    number = contacts.get(contact_name.lower())
+    number = CONTACTS.get(contact_name.lower())
     if not number:
         raise ValueError(f"Contact '{contact_name}' not found.")
     return number
